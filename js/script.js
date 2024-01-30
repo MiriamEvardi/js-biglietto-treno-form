@@ -52,8 +52,8 @@ startButtonElement.addEventListener("click",
 
 
 
-
         //start discounts
+
         if (age < 18) {
             let discount = 0.2;
 
@@ -74,13 +74,9 @@ startButtonElement.addEventListener("click",
         let totalCost = km * discountedPrice;
         let lastPrice = totalCost.toFixed(2);
 
-        document.getElementById('train-ticket').innerHTML = lastPrice + ' €';
-        console.log("totalCost");
 
+        document.getElementById('train-ticket').innerHTML = '€ ' + lastPrice;
 
-        //if everything is well done
-        if (!errorHappened) {
-            document.getElementById("train-ticket").innerHTML = "Il prezzo del tuo biglietto è di € " + lastPrice.toFixed(2) + "<br>" + discountMessage;
-        }
+        document.querySelector('#username').innerText = userName;
     }
 )
