@@ -2,7 +2,7 @@ const kmElement = document.querySelector("#input-km");
 const ageElement = document.querySelector("#input-age");
 const nameElement = document.querySelector("#inputName");
 const startButtonElement = document.querySelector("#start");
-
+const reloadButtonEvent = document.querySelector("#reload");
 
 let km;
 let age;
@@ -13,7 +13,15 @@ let kmPrice = 0.21;
 let discountedPrice = kmPrice;
 let errorHappened = false;
 
+//refresh button
+reloadButtonEvent.addEventListener("click",
+    function () {
+        window.location.reload()
+    }
+)
 
+
+//start button
 startButtonElement.addEventListener("click",
     function () {
 
@@ -53,30 +61,31 @@ startButtonElement.addEventListener("click",
 
 
         //start discounts
+        if (!errorHappened) {
+            if (age < 18) {
+                let discount = 0.2;
 
-        if (age < 18) {
-            let discount = 0.2;
+                document.getElementById('discount').innerHTML = "Hai ricevuto uno sconto del 20%";
+                discountedPrice = kmPrice * (1 - discount);
 
-            document.getElementById('discount').innerHTML = "Hai ricevuto uno sconto del 20%";
-            discountedPrice = kmPrice * (1 - discount);
+            } else if (age > 64) {
+                let discount = 0.4;
 
-        } else if (age > 64) {
-            let discount = 0.4;
+                document.getElementById('discount').innerHTML = "Hai ricevuto uno sconto del 40%";
+                discountedPrice = kmPrice * (1 - discount);
 
-            document.getElementById('discount').innerHTML = "Hai ricevuto uno sconto del 40%";
-            discountedPrice = kmPrice * (1 - discount);
+            } else {
+                document.getElementById('discount').innerHTML = "-";
+                discountedPrice = kmPrice;
+            }
 
-        } else {
-            document.getElementById('discount').innerHTML = "-";
-            discountedPrice = kmPrice;
+            let totalCost = km * discountedPrice;
+            let lastPrice = totalCost.toFixed(2);
+
+
+            document.getElementById('train-ticket').innerHTML = '€ ' + lastPrice;
+
+            document.querySelector('#username').innerText = userName;
         }
-
-        let totalCost = km * discountedPrice;
-        let lastPrice = totalCost.toFixed(2);
-
-
-        document.getElementById('train-ticket').innerHTML = '€ ' + lastPrice;
-
-        document.querySelector('#username').innerText = userName;
     }
 )
