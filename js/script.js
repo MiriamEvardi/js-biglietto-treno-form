@@ -11,6 +11,7 @@ let userName;
 let kmPrice = 0.21;
 
 let discountedPrice = kmPrice;
+let errorHappened = false;
 
 
 startButtonElement.addEventListener("click",
@@ -20,7 +21,6 @@ startButtonElement.addEventListener("click",
         km = kmElement.value;
         userName = nameElement.value;
 
-        let errorHappened = false;
 
         //km error
         if (km < 1 || km == 0) {
@@ -76,10 +76,11 @@ startButtonElement.addEventListener("click",
 
         document.getElementById('train-ticket').innerHTML = lastPrice + ' €';
         console.log("totalCost");
+
+
+        //if everything is well done
+        if (!errorHappened) {
+            document.getElementById("train-ticket").innerHTML = "Il prezzo del tuo biglietto è di € " + lastPrice.toFixed(2) + "<br>" + discountMessage;
+        }
     }
 )
-
-//if everything is well done
-if (!errorHappened) {
-    document.getElementById("train-ticket").innerHTML = "Il prezzo del tuo biglietto è di € " + finalPrice.toFixed(2) + "<br>" + discountMessage;
-}
