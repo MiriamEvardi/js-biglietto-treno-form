@@ -67,7 +67,7 @@ startButtonElement.addEventListener("click",
             discountedPrice = kmPrice * (1 - discount);
 
         } else {
-            document.getElementById('discount').innerHTML = "";
+            document.getElementById('discount').innerHTML = "-";
             discountedPrice = kmPrice;
         }
 

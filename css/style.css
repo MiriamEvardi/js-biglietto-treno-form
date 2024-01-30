@@ -1,0 +1,21 @@
+body {
+    background-color: rgb(179, 113, 242);
+}
+
+.purple {
+    color: rgb(179, 113, 242);
+}
+
+#input-age,
+#inputName,
+#input-km {
+    border: rgb(179, 113, 242) 3px solid;
+}
+
+#start {
+    background-color: rgb(230, 181, 255);
+}
+
+.details {
+    height: 200px;
+}
