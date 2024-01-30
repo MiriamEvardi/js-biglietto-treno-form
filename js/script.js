@@ -1,14 +1,12 @@
 const kmElement = document.querySelector("#input-km");
 const ageElement = document.querySelector("#input-age");
+const nameElement = document.querySelector("#inputName");
 const startButtonElement = document.querySelector("#start");
-
-console.log(startButtonElement)
 
 
 let km;
 let age;
-
-
+let userName;
 
 let kmPrice = 0.21;
 
@@ -20,30 +18,42 @@ startButtonElement.addEventListener("click",
 
         age = ageElement.value;
         km = kmElement.value;
-
-
+        userName = nameElement.value;
 
         let errorHappened = false;
-        if (errorHappened == false) {
 
-            if (isNaN(age) || age <= 0 || age > 105) {
-                document.querySelector("#age-error").innerHTML = "Valore errato, inserire un valore valido";
-                errorHappened = true;
-            } else {
-                document.querySelector("#age-error").innerHTML = "";
-            }
-        }
-
-
-        if (isNaN(km) || km < 1 || km == 0) {
+        //km error
+        if (km < 1 || km == 0) {
             document.querySelector("#km-error").innerHTML = "Valore errato, inserire un valore valido";
 
             errorHappened = true;
+        } else {
+            document.querySelector("#km-error").innerHTML = "";
+        }
+
+        //username error
+        if (!isNaN(userName) || userName === "") {
+            document.querySelector("#nameError").innerHTML = "Valore errato, inserire un valore valido";
+
+            errorHappened = true;
+        } else {
+            document.querySelector("#nameError").innerHTML = "";
+        }
+
+        //age error
+        if (age <= 0 || age > 105) {
+            document.querySelector("#age-error").innerHTML = "Valore errato, inserire un valore valido";
+
+            errorHappened = true;
+        } else {
+            document.querySelector("#age-error").innerHTML = "";
         }
 
 
 
 
+
+        //start discounts
         if (age < 18) {
             let discount = 0.2;
 
@@ -66,11 +76,10 @@ startButtonElement.addEventListener("click",
 
         document.getElementById('train-ticket').innerHTML = lastPrice + ' €';
         console.log("totalCost");
-
-
     }
 )
 
+//if everything is well done
 if (!errorHappened) {
-    document.getElementById("result").innerHTML = "Il prezzo del tuo biglietto è di € " + finalPrice.toFixed(2) + "<br>" + discountMessage;
+    document.getElementById("train-ticket").innerHTML = "Il prezzo del tuo biglietto è di € " + finalPrice.toFixed(2) + "<br>" + discountMessage;
 }
