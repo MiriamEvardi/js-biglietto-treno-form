@@ -16,7 +16,7 @@ let errorHappened = false;
 //refresh button
 reloadButtonEvent.addEventListener("click",
     function () {
-        window.location.reload()
+        window.location.reload();
     }
 )
 
